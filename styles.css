@@ -1,0 +1,222 @@
+/* Reset de márgenes y bordes */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+    color: #333;
+    line-height: 1.6;
+    padding-top: 100px; /* Ajustar para header fijo */
+    overflow-x: hidden;
+}
+
+/* Encabezado */
+header {
+    background: linear-gradient(to right, #f5a623, #f25c05);
+    color: white;
+    padding: 25px 0;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+header .logo {
+    font-size: 2.8rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+header .logo span {
+    color: #ffe8d1;
+}
+
+header nav ul {
+    list-style: none;
+    padding-top: 10px;
+}
+
+header nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.3s, transform 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ffe8d1;
+    transform: translateY(-5px);
+}
+
+/* Título y filtro */
+main {
+    text-align: center;
+    padding: 50px 20px 30px;
+}
+
+h1 {
+    font-size: 3.5rem;
+    color: #333;
+    margin-bottom: 40px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.catalog-filters {
+    margin-bottom: 40px;
+}
+
+.catalog-filters label {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    font-weight: 500;
+}
+
+.catalog-filters select {
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    border: 2px solid #f5a623;
+    border-radius: 5px;
+    background-color: white;
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.catalog-filters select:hover {
+    border-color: #f25c05;
+    transform: scale(1.05);
+}
+
+/* Listado de productos */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    animation: fadeIn 1.5s ease-out;
+}
+
+/* Estilo de los productos */
+.product-card {
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 25px;
+    width: 280px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: #f9f9f9;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.1);
+}
+
+.product-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 15px;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.product-card p {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.product-card button {
+    background-color: #f5a623;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.product-card button:hover {
+    background-color: #f25c05;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    margin-top: 40px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Efectos responsivos */
+@media (max-width: 768px) {
+    header .logo {
+        font-size: 2.2rem;
+    }
+
+    header nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .product-list {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .product-card {
+        width: 90%;
+    }
+}

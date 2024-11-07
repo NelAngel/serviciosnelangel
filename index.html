@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Servicios NelAngel - Catálogo de Productos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Servicios <span>NelAngel</span></div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Inicio</a></li>
+                <li><a href="index.html">Catálogo</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section (Catálogo de productos) -->
+    <main>
+        <h1>Catálogo de Productos</h1>
+        <div class="catalog-filters">
+            <label for="category-filter">Filtrar por categoría:</label>
+            <select id="category-filter">
+                <option value="all">Todos</option>
+                <option value="categoria1">Streaming </option>
+                <option value="categoria2">Licencia </option>
+                <option value="categoria3">Otras </option>
+            </select>
+        </div>
+
+        <!-- Lista de productos (vacía, llenada por JavaScript) -->
+        <div class="product-list" id="product-list"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Servicios NelAngel. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
