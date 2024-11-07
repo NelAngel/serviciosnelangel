@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Servicios NelAngel</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 5px 0;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Servicios <span>NelAngel</span></div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Inicio</a></li>
+                <li><a href="catalogo.html">Catálogo</a></li>
+                <li><a href="#">Carrito (<span id="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Historial del Carrito -->
+    <section id="cart-history-section">
+        <h2>Historial de Compras</h2>
+        <table id="cart-history-table">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Cantidad</th>
+                    <th>Precio Total</th>
+                </tr>
+            </thead>
+            <tbody id="cart-history-contents">
+                <!-- Aquí se agregarán los elementos del historial -->
+            </tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Servicios NelAngel. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- JavaScript para gestionar el carrito -->
+    <script>
+        // Obtener el carrito del localStorage
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Actualizar el contador del carrito
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.length;
+        }
+
+        // Renderizar el historial del carrito
+        function renderCartHistory() {
+            const cartHistoryContents = document.getElementById('cart-history-contents');
+            cartHistoryContents.innerHTML = ''; // Limpiar contenido previo
+
+            cart.forEach(item => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>1</td> <!-- Cantidad fija 1 para cada producto -->
+                    <td>$${item.price}</td>
+                `;
+                cartHistoryContents.appendChild(row);
+            });
+        }
+
+        // Cargar el historial del carrito al inicio
+        window.onload = () => {
+            updateCart();
+            renderCartHistory();
+        };
+    </script>
+</body>
+</html>
