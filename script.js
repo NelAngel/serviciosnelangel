@@ -16,7 +16,9 @@ const products = [
     { id: 15, name: "Directv Go", description: "Te Brindamos esta plataforma por un mes", category: "categoria1", price: 20, img: "direc.png" },
     { id: 16, name: "Suscriptores", description: "1000 seguidores en tiktok, suscriptores en insta.", category: "categoria3", price: 15, img: "suscri.png" },
     { id: 17, name: "Porn Hub", description: "Te Brindamos esta plataforma por 1 mes", category: "categoria3", price: 8, img: "porn.png" },
-    { id: 18, name: "Panel Canva", description: "Te Brindamos esta plataforma por 3 meses", category: "categoria2", price: 8, img: "canva.png" }
+    { id: 18, name: "Panel Canva", description: "Te Brindamos esta plataforma por 3 meses", category: "categoria2", price: 8, img: "canva.png" },
+    { id: 19, name: "Spotify ", description: "Te Brindamos esta por 1 meses", category: "categoria2", price: 8, img: "spo.png" },
+    { id: 20, name: "IPTV S.PRO ", description: "Te Brindamos esta por 1 meses", category: "categoria2", price: 8, img: "iptv.png" }
 ];
 
 let cart = [];
@@ -30,7 +32,7 @@ function addToCart(product) {
     updateCart();
 
     // Datos del mensaje para WhatsApp
-    const phone = "51907698346"; // Número de teléfono de destino sin el signo '+'
+    const phone = "51935170754"; // Número de teléfono de destino sin el signo '+'
     const message = `Hola, Servicios NelAngel me gustaría Comprar el siguiente producto:\n- Producto: ${product.name}\n- Precio: $${product.price}\n- Cantidad: 1`;
 
     // Codificar el mensaje para URL y construir la URL de WhatsApp
@@ -40,11 +42,28 @@ function addToCart(product) {
     window.open(url, "_blank");
 }
 
+// Función de filtrado de productos por categoría y búsqueda
 function filterProducts() {
     const category = document.getElementById('category-filter').value;
-    const filteredProducts = category === 'all' ? products : products.filter(p => p.category === category);
+    const searchText = document.getElementById('search-input').value.toLowerCase();
+    
+    const filteredProducts = products.filter(p => {
+        const matchesCategory = category === 'all' || p.category === category;
+        const matchesSearch = p.name.toLowerCase().includes(searchText) || p.description.toLowerCase().includes(searchText);
+        return matchesCategory && matchesSearch;
+    });
+    
     displayProducts(filteredProducts);
 }
+
+// Event listener para el filtro de categoría
+document.getElementById('category-filter').addEventListener('change', filterProducts);
+
+// Event listener para la barra de búsqueda
+document.getElementById('search-input').addEventListener('input', filterProducts);
+
+// Cargar todos los productos al inicio
+displayProducts(products);
 
 function displayProducts(productsToDisplay) {
     const productList = document.getElementById('product-list');
@@ -75,3 +94,44 @@ document.getElementById('category-filter').addEventListener('change', filterProd
 
 // Cargar todos los productos al inicio
 displayProducts(products);
+
+// Obtener el botón de palanca
+// Obtener el checkbox del modo oscuro
+const themeToggle = document.getElementById('theme-toggle');
+
+// Alternar el modo claro/noche
+themeToggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode');
+    document.querySelector('header').classList.toggle('dark-mode');
+    document.querySelector('footer').classList.toggle('dark-mode');
+    
+    // Actualizar el icono en el interruptor según el modo
+    if (document.body.classList.contains('dark-mode')) {
+        themeToggle.textContent = '🌞'; // Ícono de sol para modo claro
+    } else {
+        themeToggle.textContent = '🌙'; // Ícono de luna para modo oscuro
+    }
+});
+
+// script.js o script en el HTML
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Cargar el estado del tema (oscuro o claro) del almacenamiento local
+    if (localStorage.getItem('dark-mode') === 'enabled') {
+        body.classList.add('dark-mode');
+        themeToggle.checked = true;
+    }
+
+    // Cambiar el tema cuando se haga clic en el interruptor
+    themeToggle.addEventListener('change', () => {
+        if (themeToggle.checked) {
+            body.classList.add('dark-mode');
+            localStorage.setItem('dark-mode', 'enabled');
+        } else {
+            body.classList.remove('dark-mode');
+            localStorage.setItem('dark-mode', 'disabled');
+        }
+    });
+});

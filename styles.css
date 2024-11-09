@@ -4,6 +4,13 @@
     padding: 0;
     box-sizing: border-box;
 }
+h1 {
+    font-size: 3.5rem;
+    color: #333;
+    margin: 25px 0 40px; /* Cambia el primer valor a 80px para dar más espacio arriba */
+    font-weight: 700;
+    text-transform: uppercase;
+}
 
 /* Estilos generales */
 body {
@@ -13,6 +20,36 @@ body {
     line-height: 1.6;
     padding-top: 100px; /* Ajustar para header fijo */
     overflow-x: hidden;
+}
+
+/* Modo noche */
+body.dark-mode {
+    background: #121212;
+    color: #e0e0e0;
+}
+
+header.dark-mode {
+    background: linear-gradient(to right, #333, #444);
+}
+
+footer.dark-mode {
+    background-color: #222;
+}
+
+/* Botón de palanca para modo claro/noche */
+.theme-toggle {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+body.dark-mode .theme-toggle {
+    color: #ffd700; /* Color amarillo para el icono en modo noche */
 }
 
 /* Encabezado */
@@ -80,6 +117,7 @@ h1 {
 
 .catalog-filters {
     margin-bottom: 40px;
+    margin-top: -10px; /* Ajusta este valor para que el buscador suba */
 }
 
 .catalog-filters label {
@@ -220,3 +258,75 @@ footer p {
         width: 90%;
     }
 }
+
+/* Estilos para la barra de búsqueda */
+.search-bar {
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    border: 2px solid #f5a623;
+    border-radius: 50px;
+    margin-left: 20px;
+    width: 300px;
+    position: relative;
+    top: -20px; /* Ajusta este valor para mover solo el buscador hacia arriba */
+    transition: border-color 0.3s, transform 0.3s;
+}
+
+.search-bar:hover {
+    border-color: #f25c05;
+    transform: scale(1.05);
+}
+/* Estilos para la palanca de cambio de tema */
+.theme-switch-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.theme-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 30px;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 30px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #f5a623;
+}
+
+input:checked + .slider:before {
+    transform: translateX(30px);
+}
+
