@@ -1,6 +1,6 @@
 const products = [
     { id: 1, name: "Netflix", description: "Te Brindamos esta plataforma por un mes.", category: "categoria1", price: 10, img: "netflix.jpg" },
-    { id: 2, name: "Movistar Play", description: "Te Brindamos esta plataforma por un mes.", category: "categoria2", price: 20, img: "movistar play.png" },
+    { id: 2, name: "Movistar Play", description: "Te Brindamos esta plataforma por un mes.", category: "categoria1", price: 20, img: "movistar play.png" },
     { id: 3, name: "Disney plus", description: "Te Brindamos esta plataforma por un mes.", category: "categoria1", price: 10, img: "disney.png" },
     { id: 4, name: "Youtube", description: "Te Brindamos esta plataforma por un mes.", category: "categoria1", price: 7, img: "youtube.png" },
     { id: 5, name: "Paramount", description: "Te Brindamos esta plataforma por un mes.", category: "categoria1", price: 8, img: "paramount.png" },
@@ -17,8 +17,8 @@ const products = [
     { id: 16, name: "Suscriptores", description: "1000 seguidores en tiktok, suscriptores en insta.", category: "categoria3", price: 15, img: "suscri.png" },
     { id: 17, name: "Porn Hub", description: "Te Brindamos esta plataforma por 1 mes", category: "categoria3", price: 8, img: "porn.png" },
     { id: 18, name: "Panel Canva", description: "Te Brindamos esta plataforma por 3 meses", category: "categoria2", price: 8, img: "canva.png" },
-    { id: 19, name: "Spotify ", description: "Te Brindamos esta por 1 meses", category: "categoria2", price: 8, img: "spo.png" },
-    { id: 20, name: "IPTV S.PRO ", description: "Te Brindamos esta por 1 meses", category: "categoria2", price: 8, img: "iptv.png" }
+    { id: 19, name: "Spotify ", description: "Te Brindamos esta por 1 meses", category: "categoria1", price: 8, img: "spo.png" },
+    { id: 20, name: "IPTV S.PRO ", description: "Te Brindamos esta por 1 meses", category: "categoria1", price: 8, img: "iptv.png" }
 ];
 
 let cart = [];
