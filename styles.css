@@ -7,7 +7,7 @@
 h1 {
     font-size: 3.5rem;
     color: #333;
-    margin: 25px 0 40px; /* Cambia el primer valor a 80px para dar más espacio arriba */
+    margin: 85px 0 40px; /* Cambia el primer valor a 80px para dar más espacio arriba */
     font-weight: 700;
     text-transform: uppercase;
 }
