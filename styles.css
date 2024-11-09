@@ -279,7 +279,7 @@ footer p {
 /* Estilos para la palanca de cambio de tema */
 .theme-switch-wrapper {
     position: absolute;
-    top: 20px;
+    top: 5px;
     right: 20px;
     display: flex;
     align-items: center;
