@@ -32,7 +32,7 @@ function addToCart(product) {
     updateCart();
 
     // Datos del mensaje para WhatsApp
-    const phone = "51935170754"; // Número de teléfono de destino sin el signo '+'
+    const phone = "51907698346"; // Número de teléfono de destino sin el signo '+'
     const message = `Hola, Servicios NelAngel me gustaría Comprar el siguiente producto:\n- Producto: ${product.name}\n- Precio: $${product.price}\n- Cantidad: 1`;
 
     // Codificar el mensaje para URL y construir la URL de WhatsApp
