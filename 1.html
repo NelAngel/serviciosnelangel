@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalles de Suscripción - Servicios Nelangel</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 700px;
+      background: #fff;
+      margin: 50px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 24px;
+      color: #0066cc;
+      margin-bottom: 20px;
+    }
+
+    .details {
+      text-align: left;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .note {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #777;
+    }
+
+    .output {
+      margin-top: 20px;
+      background: #f9f9f9;
+      padding: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: left;
+      font-family: monospace;
+    }
+
+    button {
+      background: #0066cc;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #004080;
+    }
+
+    .whatsapp {
+      background: #25d366;
+    }
+
+    .whatsapp:hover {
+      background: #1da653;
+    }
+
+    .warning {
+      color: red;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .info {
+      color: #f90;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📽🎬 Servicios Nelangel IPTV 🎬📽</h1>
+    <form id="form">
+      <input type="text" id="username" placeholder="Usuario (e.g., Dina buluarto zegarra)" required>
+      <input type="text" id="password" placeholder="Contraseña (e.g., 123123)" required>
+      <select id="subscriptionType" onchange="setDates()">
+        <option value="custom">Seleccionar manualmente</option>
+        <option value="3hours">Prueba (3 horas)</option>
+        <option value="1month">Suscripción (1 mes)</option>
+      </select>
+      <input type="datetime-local" id="startDate" placeholder="Fecha de inicio" required>
+      <input type="datetime-local" id="endDate" placeholder="Fecha de vencimiento" required>
+      <button type="button" onclick="generateText()">Generar Detalles</button>
+    </form>
+
+    <div class="output" id="output">
+      <!-- Aquí se mostrará el texto generado -->
+    </div>
+
+    <div class="button-group">
+      <button type="button" onclick="copyText()">Copiar</button>
+      <button type="button" class="whatsapp" onclick="sendToWhatsApp()">Enviar a WhatsApp</button>
+    </div>
+
+    <div id="warningMessage" class="warning" style="display: none;">
+      ⚠️ **Advertencia**: Has seleccionado "Prueba (3 horas)". Asegúrate de que la hora sea correcta.
+    </div>
+
+    <div id="infoMessage" class="info" style="display: none;">
+      ℹ️ **Información**: Has elegido una prueba de 3 horas.
+    </div>
+  </div>
+
+  <script>
+function setDates() {
+  const type = document.getElementById('subscriptionType').value;
+  const startDateInput = document.getElementById('startDate');
+  const endDateInput = document.getElementById('endDate');
+  const warningMessage = document.getElementById('warningMessage');
+  const infoMessage = document.getElementById('infoMessage');
+  const now = new Date();
+
+  const adjustToLocal = (date) => {
+    const localTime = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
+    return localTime.toISOString().slice(0, 16);
+  };
+
+  if (type === '3hours') {
+    const startDate = adjustToLocal(now);
+    const endDate = adjustToLocal(new Date(now.getTime() + 3 * 60 * 60 * 1000)); // 3 horas después
+    startDateInput.value = startDate;
+    endDateInput.value = endDate;
+    warningMessage.style.display = 'block'; // Mostrar advertencia
+    infoMessage.style.display = 'block'; // Mostrar información adicional
+  } else if (type === '1month') {
+    const startDate = adjustToLocal(now);
+    const endDate = adjustToLocal(new Date(now.setMonth(now.getMonth() + 1))); // 1 mes después
+    startDateInput.value = startDate;
+    endDateInput.value = endDate;
+    warningMessage.style.display = 'none'; // Ocultar advertencia
+    infoMessage.style.display = 'none'; // Ocultar información adicional
+  } else {
+    startDateInput.value = '';
+    endDateInput.value = '';
+    warningMessage.style.display = 'none'; // Ocultar advertencia
+    infoMessage.style.display = 'none'; // Ocultar información adicional
+  }
+}
+
+    function generateText() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const startDate = new Date(document.getElementById('startDate').value).toLocaleString("es-ES", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+      const endDate = new Date(document.getElementById('endDate').value).toLocaleString("es-ES", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+      });
+
+      if (!username || !password || !startDate || !endDate) {
+        alert("Por favor completa todos los campos.");
+        return;
+      }
+
+      let subscriptionInfo = '';
+      const subscriptionType = document.getElementById('subscriptionType').value;
+      if (subscriptionType === '3hours') {
+        subscriptionInfo = '\nℹ️ Has elegido una prueba de 3 horas.';
+      }
+
+      const text = `
+👋 Hola, ${username} somos
+
+📽🦁 *Servicios Nelangel* 🦁📽  
+🍿 *Tu acceso esta listo:* 🍿
+
+*--------------------------------------*
+
+🗓 *Detalles de tu suscripción* 🗓 
+
+- *Inicio del servicio*: 🕒 ${startDate}  
+- *Fecha de vencimiento*: 🗓️ ${endDate}  
+- *Nombre*: 👥 NelAngel(nombre modificable)  
+- *Usuario*: 🙍🏻‍♂ ${username}  
+- *Contraseña*: 🛡 ${password}  
+- *Enlace de acceso*: 🌐 http://lamtv.site:8080
+
+*--------------------------------------*
+
+⚠️ *Nota importante* ⚠️
+- Fíjate en la fecha de compra.  
+- No intentes modificar el nombre ni la contraseña sin autorización.  
+- En caso de inconveniente, contacta con soporte. El problema se solucionará en un plazo de 1-24 horas.
+
+*--------------------------------------*
+
+🎬 *Gracias por elegir Servicios Nelangel* 🎬
+
+${subscriptionInfo}
+      `;
+      
+      document.getElementById('output').innerText = text;
+    }
+
+    // Función para copiar el texto generado al portapapeles
+    function copyText() {
+      const outputText = document.getElementById('output').innerText;
+      navigator.clipboard.writeText(outputText)
+        .then(() => {
+          alert('Texto copiado al portapapeles');
+        })
+        .catch(err => {
+          alert('Error al copiar el texto: ' + err);
+        });
+    }
+
+    // Función para enviar el texto por WhatsApp
+    function sendToWhatsApp() {
+      const outputText = encodeURIComponent(document.getElementById('output').innerText);
+      const url = `https://wa.me/?text=${outputText}`;
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>

@@ -75,7 +75,17 @@
             font-size: 1rem;
             margin: 0;
         }
-        
+        /* Estilos para el modo oscuro */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+header.dark-mode, footer.dark-mode {
+    background-color: #333333;
+    color: #ffffff;
+}
+
     </style>
 </head>
 <body>
@@ -87,6 +97,7 @@
                 <li><a href="home.html">Inicio</a></li>
                 <li><a href="index.html">Catálogo</a></li>
                 <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="#" id="restricted-link">RESTRINGIDO</a></li>
             </ul>
         </nav>
         <div class="theme-switch-wrapper">
@@ -122,5 +133,41 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+
+
+        // Modo oscuro
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                body.classList.add('dark-mode');
+                themeToggle.checked = true;
+            }
+
+            themeToggle.addEventListener('change', () => {
+                if (themeToggle.checked) {
+                    body.classList.add('dark-mode');
+                    localStorage.setItem('dark-mode', 'enabled');
+                } else {
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('dark-mode', 'disabled');
+                }
+            });
+        });
+
+        // Protección por contraseña
+        document.getElementById('restricted-link').addEventListener('click', (event) => {
+            event.preventDefault(); // Previene la navegación directa
+            const password = prompt('Introduce la contraseña para acceder:');
+            if (password === 'holahola') {
+                window.location.href = '1.html';
+            } else {
+                alert('Contraseña incorrecta. Acceso denegado.');
+            }
+        });
+   
+</script>
 </body>
 </html>

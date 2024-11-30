@@ -29,11 +29,19 @@ function updateCart() {
 
 function addToCart(product) {
     cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart)); // Guardar en localStorage
     updateCart();
 
+    // Solicitar el país al usuario
+    const country = prompt("¿De qué país eres?");
+    if (!country) {
+        alert("Por favor, ingresa tu país para continuar.");
+        return; // Detener si el usuario no proporciona un país
+    }
+
     // Datos del mensaje para WhatsApp
-    const phone = "51907698346"; // Número de teléfono de destino sin el signo '+'
-    const message = `Hola, Servicios NelAngel me gustaría Comprar el siguiente producto:\n- Producto: ${product.name}\n- Precio: $${product.price}\n- Cantidad: 1`;
+    const phone = "51907698346"; // Número de WhatsApp de destino
+    const message = `Hola, Servicios NelAngel, me gustaría comprar el siguiente producto:\n- Producto: ${product.name}\n- Precio: S/${product.price.toFixed(2)}\n- Cantidad: 1\n- País: ${country}`;
 
     // Codificar el mensaje para URL y construir la URL de WhatsApp
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -41,6 +49,8 @@ function addToCart(product) {
     // Redireccionar al enlace de WhatsApp
     window.open(url, "_blank");
 }
+
+
 
 // Función de filtrado de productos por categoría y búsqueda
 function filterProducts() {
@@ -67,7 +77,7 @@ displayProducts(products);
 
 function displayProducts(productsToDisplay) {
     const productList = document.getElementById('product-list');
-    productList.innerHTML = '';  // Limpiar el contenido previo
+    productList.innerHTML = ''; // Limpiar el contenido previo
 
     productsToDisplay.forEach((product) => {
         const productCard = document.createElement('div');
@@ -76,10 +86,9 @@ function displayProducts(productsToDisplay) {
             <img src="${product.img}" alt="${product.name}">
             <h3>${product.name}</h3>
             <p>${product.description}</p>
-            <p><strong>$${product.price}</strong></p>
+            <p><strong>S/${product.price.toFixed(2)}</strong></p>
         `;
-        
-        // Crear el botón de añadir al carrito
+
         const button = document.createElement('button');
         button.textContent = "Añadir al carrito";
         button.onclick = () => addToCart(product);
@@ -98,18 +107,18 @@ displayProducts(products);
 // Obtener el botón de palanca
 // Obtener el checkbox del modo oscuro
 const themeToggle = document.getElementById('theme-toggle');
+if (localStorage.getItem('dark-mode') === 'enabled') {
+    document.body.classList.add('dark-mode');
+    themeToggle.checked = true;
+}
 
-// Alternar el modo claro/noche
 themeToggle.addEventListener('change', () => {
-    document.body.classList.toggle('dark-mode');
-    document.querySelector('header').classList.toggle('dark-mode');
-    document.querySelector('footer').classList.toggle('dark-mode');
-    
-    // Actualizar el icono en el interruptor según el modo
-    if (document.body.classList.contains('dark-mode')) {
-        themeToggle.textContent = '🌞'; // Ícono de sol para modo claro
+    if (themeToggle.checked) {
+        document.body.classList.add('dark-mode');
+        localStorage.setItem('dark-mode', 'enabled');
     } else {
-        themeToggle.textContent = '🌙'; // Ícono de luna para modo oscuro
+        document.body.classList.remove('dark-mode');
+        localStorage.setItem('dark-mode', 'disabled');
     }
 });
 
@@ -118,13 +127,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
-    // Cargar el estado del tema (oscuro o claro) del almacenamiento local
+    // Verificar el estado del modo oscuro en el almacenamiento local
     if (localStorage.getItem('dark-mode') === 'enabled') {
         body.classList.add('dark-mode');
         themeToggle.checked = true;
     }
 
-    // Cambiar el tema cuando se haga clic en el interruptor
+    // Alternar el modo oscuro
     themeToggle.addEventListener('change', () => {
         if (themeToggle.checked) {
             body.classList.add('dark-mode');
@@ -135,3 +144,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+window.onload = () => {
+    cart = JSON.parse(localStorage.getItem('cart')) || [];
+    updateCart();
+    renderCartHistory();
+};
+function renderCartHistory() {
+    const cartHistoryContents = document.getElementById('cart-history-contents');
+    cartHistoryContents.innerHTML = ''; // Limpiar contenido previo
+
+    cart.forEach(item => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${item.name}</td>
+            <td>1</td> <!-- Cantidad fija 1 para cada producto -->
+            <td>S/${item.price.toFixed(2)}</td>
+        `;
+        cartHistoryContents.appendChild(row);
+    });
+}
