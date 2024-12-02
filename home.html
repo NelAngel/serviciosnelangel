@@ -1,95 +1,94 @@
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Servicios NelAngel - Catálogo de Productos</title>
-        <link rel="icon" type="image/png" href="logo1.jpeg">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles1.css">
-
-    </head>
-    <body>
-        <!-- Header -->
-        <header>
-            <div class="logo">Servicios <span>NelAngel</span></div>
-            <nav>
-                <ul>
-                    <li><a href="home.html">Inicio</a></li>
-                    <li><a href="index.html">Catálogo</a></li>
-                    <li><a href="carrito.html">Carrito</a></li>
-                    <li><a href="#" id="restricted-link">RESTRINGIDO</a></li>
-                </ul>
-            </nav>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch">
-                    <input type="checkbox" id="theme-toggle">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </header>
-
-        <!-- Main Section (Catálogo de productos) -->
-        <main>
-            <h1>Somos Servicios NelAngel</h1>
-            <p>En Servicios NelAngel, ofrecemos una variedad de productos y servicios digitales que cubren las necesidades de entretenimiento a poco costo,
-            dando un descuento en varias plataformas. Nuestro catálogo está cuidadosamente seleccionado para brindarte opciones de calidad y conveniencia.</p>
-
-            <h2>Categorías Principales</h2>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Servicios NelAngel - Catálogo de Productos</title>
+    <link rel="icon" type="image/png" href="logo1.jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Aquí se enlaza el CSS adaptado -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">Servicios <span>NelAngel</span></div>
+        <nav>
             <ul>
-                <li><strong>Streaming:</strong> Accede a planes exclusivos de tus plataformas favoritas como Netflix y Disney+ para que disfrutes del mejor contenido desde cualquier lugar.</li>
-                <li><strong>Licencias:</strong> Mejora tu productividad con licencias oficiales de Microsoft Office 365 y otras herramientas esenciales para trabajo y estudio.</li>
-                <li><strong>Otros Servicios:</strong> Explora opciones , suscripciones a instegran, tik tok y mucho más para expandir tus habilidades y conocimiento.</li>
+                <li><a href="home.html">Inicio</a></li>
+                <li><a href="index.html">Catálogo</a></li>
+                <li><a href="carrito.html">Carrito</a></li>
+                <li><a href="#" id="restricted-link">RESTRINGIDO</a></li>
             </ul>
+        </nav>
+        <div class="theme-switch-wrapper">
+            <label class="theme-switch">
+                <input type="checkbox" id="theme-toggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </header>
 
-            <h2>Por Qué Elegirnos</h2>
-            <p>Nuestro compromiso es ofrecer productos y servicios confiables y asequibles, adaptados a cada usuario. Con nuestro enfoque en calidad y soporte, podrás acceder a tus suscripciones y licencias de forma rápida y sin complicaciones.</p>
+    <!-- Main Section (Catálogo de productos) -->
+    <main>
+        <section class="presentation">
+            <div class="presentation-content">
+                <h1>Somos Servicios NelAngel</h1>
+                <p>En Servicios NelAngel, ofrecemos una variedad de productos y servicios digitales que cubren las necesidades de entretenimiento a bajo costo, dando un descuento en varias plataformas. Nuestro catálogo está cuidadosamente seleccionado para brindarte opciones de calidad y conveniencia.</p>
 
-            <p>Explora nuestro catálogo y descubre la mejor opción para tus necesidades digitales. ¡Gracias por confiar en Servicios NelAngel!</p>
-        </main>
+                <h2>Categorías Principales</h2>
+                <ul>
+                    <li><strong>Streaming:</strong> Accede a planes exclusivos de tus plataformas favoritas como Netflix y Disney+ para que disfrutes del mejor contenido desde cualquier lugar.</li>
+                    <li><strong>Licencias:</strong> Mejora tu productividad con licencias oficiales de Microsoft Office 365 y otras herramientas esenciales para trabajo y estudio.</li>
+                    <li><strong>Otros Servicios:</strong> Explora opciones, suscripciones a Instagram, TikTok y mucho más para expandir tus habilidades y conocimiento.</li>
+                </ul>
 
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2024 Servicios NelAngel. Todos los derechos reservados.</p>
-        </footer>
+                <h2>Por Qué Elegirnos</h2>
+                <p>Nuestro compromiso es ofrecer productos y servicios confiables y asequibles, adaptados a cada usuario. Con nuestro enfoque en calidad y soporte, podrás acceder a tus suscripciones y licencias de forma rápida y sin complicaciones.</p>
 
-        <script src="script.js"></script>
-        <script>
+                <p>Explora nuestro catálogo y descubre la mejor opción para tus necesidades digitales. ¡Gracias por confiar en Servicios NelAngel!</p>
+            </div>
+        </section>
+    </main>
 
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Servicios NelAngel. Todos los derechos reservados.</p>
+    </footer>
 
-            // Modo oscuro
-            document.addEventListener('DOMContentLoaded', () => {
-                const themeToggle = document.getElementById('theme-toggle');
-                const body = document.body;
+    <script src="script.js"></script>
+    <script>
+        // Modo oscuro
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
 
-                if (localStorage.getItem('dark-mode') === 'enabled') {
+            if (localStorage.getItem('dark-mode') === 'enabled') {
+                body.classList.add('dark-mode');
+                themeToggle.checked = true;
+            }
+
+            themeToggle.addEventListener('change', () => {
+                if (themeToggle.checked) {
                     body.classList.add('dark-mode');
-                    themeToggle.checked = true;
-                }
-
-                themeToggle.addEventListener('change', () => {
-                    if (themeToggle.checked) {
-                        body.classList.add('dark-mode');
-                        localStorage.setItem('dark-mode', 'enabled');
-                    } else {
-                        body.classList.remove('dark-mode');
-                        localStorage.setItem('dark-mode', 'disabled');
-                    }
-                });
-            });
-
-            // Protección por contraseña
-            document.getElementById('restricted-link').addEventListener('click', (event) => {
-                event.preventDefault(); // Previene la navegación directa
-                const password = prompt('Introduce la contraseña para acceder:');
-                if (password === 'holahola') {
-                    window.location.href = '1.html';
+                    localStorage.setItem('dark-mode', 'enabled');
                 } else {
-                    alert('Contraseña incorrecta. Acceso denegado.');
+                    body.classList.remove('dark-mode');
+                    localStorage.setItem('dark-mode', 'disabled');
                 }
             });
-    
+        });
+
+        // Protección por contraseña
+        document.getElementById('restricted-link').addEventListener('click', (event) => {
+            event.preventDefault(); // Previene la navegación directa
+            const password = prompt('Introduce la contraseña para acceder:');
+            if (password === 'holahola') {
+                window.location.href = '1.html';
+            } else {
+                alert('Contraseña incorrecta. Acceso denegado.');
+            }
+        });
     </script>
-    </body>
-    </html>
+</body>
+</html>
