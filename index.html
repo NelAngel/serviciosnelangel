@@ -3,41 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Servicios NelAngel - Catálogo de Productos</title>
-    <link rel="icon" type="image/png" href="logo1.jpeg">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Catálogo Único</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="logo1.jpeg">
 </head>
-<style>/* Estilos del tema oscuro */
-    body.dark-mode {
-        background-color: #121212;
-        color: #f8f9fa;
-    }
-    
-    body.dark-mode main {
-        background-color: #333;
-        color: #f8f9fa;
-    }
-    
-    body.dark-mode main h1 {
-        color: #ff9500;
-    }
-    
-    body.dark-mode main p,
-    body.dark-mode h2,
-    body.dark-mode ul li {
-        color: #e0e0e0;
-    }
-    
-    body.dark-mode footer {
-        background-color: #222;
-        color: #e0e0e0;
-    }
-    </style>
 <body>
     <!-- Header -->
-    <header>
+    <header class="header">
         <div class="logo">Servicios <span>NelAngel</span></div>
         <nav>
             <ul>
@@ -46,35 +18,40 @@
                 <li><a href="carrito.html">Carrito (<span id="cart-count">0</span>)</a></li>
             </ul>
         </nav>
-        <div class="theme-switch-wrapper">
-            <label class="theme-switch">
-                <input type="checkbox" id="theme-toggle">
-                <span class="slider"></span>
-            </label>
-        </div>
-        
     </header>
 
-    <!-- Main Section (Catálogo de productos) -->
-    <main>
-        <h1>Catálogo de Productos</h1>
-        <div class="catalog-filters">
-            <label for="category-filter">Filtrar por categoría:</label>
-            <select id="category-filter">
-                <option value="all">Todos</option>
-                <option value="categoria1">Streaming </option>
-                <option value="categoria2">Licencia </option>
-                <option value="categoria3">Otras </option>
-            </select>
+    <!-- Sección de presentación -->
+    <section class="presentation">
+        <div class="presentation-content">
+            <h1>Bienvenido a Catálogo Único</h1>
+            <p>Explora nuestras suscripciones, licencias y más. ¡Encuentra lo que necesitas en un solo lugar!</p>
+            <a href="#product-list" class="cta-button">Descubrir productos</a>
+
         </div>
-        <input type="text" id="search-input" placeholder="Buscar producto..." class="search-bar">
-        <!-- Lista de productos (vacía, llenada por JavaScript) -->
-        <div class="product-list" id="product-list"></div>
-    </main>
+        <div class="presentation-image">
+            <img src="fondoprin.jpg" alt="Presentación del catálogo">
+        </div>
+    </section>
+
+    <!-- Filtros -->
+    <section class="filters">
+        <select id="category-filter" class="filter-select">
+            <option value="all">Todas las categorías</option>
+            <option value="categoria1">Streaming</option>
+            <option value="categoria2">Licencias</option>
+            <option value="categoria3">Otros</option>
+        </select>
+        <input type="text" id="search-input" class="search-input" placeholder="Buscar producto...">
+    </section>
+
+    <!-- Lista de Productos -->
+    <section id="product-list" class="product-list">
+        <!-- Productos se generarán dinámicamente -->
+    </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2024 Servicios NelAngel. Todos los derechos reservados.</p>
+    <footer class="footer">
+        <p>© 2024 Catálogo Único - Todos los derechos reservados</p>
     </footer>
 
     <script src="script.js"></script>

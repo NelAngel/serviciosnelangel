@@ -32,16 +32,9 @@ function addToCart(product) {
     localStorage.setItem('cart', JSON.stringify(cart)); // Guardar en localStorage
     updateCart();
 
-    // Solicitar el país al usuario
-    const country = prompt("¿De qué país eres?");
-    if (!country) {
-        alert("Por favor, ingresa tu país para continuar.");
-        return; // Detener si el usuario no proporciona un país
-    }
-
-    // Datos del mensaje para WhatsApp
+    // Datos del mensaje para WhatsApp (ya no pregunta por el país)
     const phone = "51907698346"; // Número de WhatsApp de destino
-    const message = `Hola, Servicios NelAngel, me gustaría comprar el siguiente producto:\n- Producto: ${product.name}\n- Precio: S/${product.price.toFixed(2)}\n- Cantidad: 1\n- País: ${country}`;
+    const message = `Hola, Servicios NelAngel, me gustaría comprar el siguiente producto:\n- Producto: ${product.name}\n- Precio: S/${product.price.toFixed(2)}\n- Cantidad: 1`;
 
     // Codificar el mensaje para URL y construir la URL de WhatsApp
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
@@ -163,3 +156,11 @@ function renderCartHistory() {
         cartHistoryContents.appendChild(row);
     });
 }
+
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
+
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
