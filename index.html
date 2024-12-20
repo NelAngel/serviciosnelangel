@@ -3,57 +3,514 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo Único</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="logo1.jpeg">
+    <title>NELANGEL - Plataformas Digitales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="nelangel.png">
+    <link rel="stylesheet" href="style.css"> <!-- Aquí se enlaza el archivo de CSS -->
+    <script>
+        function buscarProducto() {
+            let input = document.getElementById("buscador").value.toLowerCase();
+            let productos = document.getElementsByClassName("producto");
+            
+            for (let i = 0; i < productos.length; i++) {
+                let nombreProducto = productos[i].getElementsByClassName("card-title")[0].textContent.toLowerCase();
+                if (nombreProducto.includes(input)) {
+                    productos[i].style.display = "";
+                } else {
+                    productos[i].style.display = "none";
+                }
+            }
+        }
+        function redirectToPage() {
+        // Solicitar la contraseña al usuario
+        const password = prompt("Por favor, ingrese la contraseña:");
+        
+        // Verificar la contraseña
+        if (password === "123.123") {
+            // Redirigir a 1.html si la contraseña es correcta
+            window.location.href = "1.html";
+        } else {
+            // Mostrar un mensaje de error si la contraseña es incorrecta
+            alert("Contraseña incorrecta. No puedes acceder a esta página.");
+        }
+    }
+    </script>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <div class="logo">Servicios <span>NelAngel</span></div>
-        <nav>
-            <ul>
-                <li><a href="home.html">Inicio</a></li>
-                <li><a href="index.html">Catálogo</a></li>
-                <li><a href="carrito.html">Carrito (<span id="cart-count">0</span>)</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <!-- Logo y texto enlazados con contraseña -->
+            <a class="navbar-brand" href="#" onclick="redirectToPage()">
+                <img src="nelangel.png" alt="NELANGEL Logo" style="width: 40px; height: auto;"> NELANGEL
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#productos">Plataformas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacto">Contacto</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
 
-    <!-- Sección de presentación -->
-    <section class="presentation">
-        <div class="presentation-content">
-            <h1>Bienvenido a Catálogo Único</h1>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container text-center">
+            <h1>Bienvenido a NELANGEL</h1>
             <p>Explora nuestras suscripciones, licencias y más. ¡Encuentra lo que necesitas en un solo lugar!</p>
-            <a href="#product-list" class="cta-button">Descubrir productos</a>
-
-        </div>
-        <div class="presentation-image">
-            <img src="fondoprin.jpg" alt="Presentación del catálogo">
+            <a href="#productos" class="btn btn-primary btn-lg">Explorar Plataformas</a>
         </div>
     </section>
 
-    <!-- Filtros -->
-    <section class="filters">
-        <select id="category-filter" class="filter-select">
-            <option value="all">Todas las categorías</option>
-            <option value="categoria1">Streaming</option>
-            <option value="categoria2">Licencias</option>
-            <option value="categoria3">Otros</option>
-        </select>
-        <input type="text" id="search-input" class="search-input" placeholder="Buscar producto...">
+    <!-- Buscador de Productos -->
+    <section id="productos" class="productos py-5">
+        <div class="container text-center">
+            <h2 class="mb-5">Nuestros Productos</h2>
+            <input id="buscador" type="text" class="form-control mb-4" placeholder="Buscar producto..." onkeyup="buscarProducto()">
+            <div class="row">
+                <!-- Producto 1 -->
+                <div class="col-md-3 producto">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="netflix.jpg" class="card-img-top" alt="Plataforma Netflix">
+                        <div class="card-body">
+                            <h5 class="card-title">NETFLIX</h5>
+                            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+                            <p class="card-text text-success"><strong>Precio: 10 Soles</strong></p>
+                            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20NETFLIX%0A%2A%20Precio%3A%20S%2F10.00%0A%2A%20Cantidad%3A%201"
+                               class="btn btn-outline-primary" target="_blank">
+                               Añadir al Carro
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Producto 2 -->
+                <div class="col-md-3 producto">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="canva.png" class="card-img-top" alt="Plataforma Canva">
+                        <div class="card-body">
+                            <h5 class="card-title">CANVA</h5>
+                            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+                            <p class="card-text text-success"><strong>Precio: 8 Soles</strong></p>
+                            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20CANVA%0A%2A%20Precio%3A%20S%2F8.00%0A%2A%20Cantidad%3A%201"
+                               class="btn btn-outline-primary" target="_blank">
+                               Añadir al Carro
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                                <!-- Producto 3: Crunchyroll -->
+                <div class="col-md-3 producto">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="crunchy.png" class="card-img-top" alt="Plataforma Crunchyroll">
+                        <div class="card-body">
+                            <h5 class="card-title">Crunchyroll</h5>
+                            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+                            <p class="card-text text-success"><strong>Precio: 8 Soles</strong></p>
+                            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20Crunchyroll%0A%2A%20Precio%3A%20S%2F8.00%0A%2A%20Cantidad%3A%201"
+                            class="btn btn-outline-primary" target="_blank">
+                            Añadir al Carro
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 4: HBO -->
+                <div class="col-md-3 producto">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="hbo.png" class="card-img-top" alt="Plataforma HBO">
+                        <div class="card-body">
+                            <h5 class="card-title">HBO</h5>
+                            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+                            <p class="card-text text-success"><strong>Precio: 8 Soles</strong></p>
+                            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20HBO%0A%2A%20Precio%3A%20S%2F8.00%0A%2A%20Cantidad%3A%201"
+                            class="btn btn-outline-primary" target="_blank">
+                            Añadir al Carro
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 5: IPTV -->
+                <div class="col-md-3 producto">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="iptv.png" class="card-img-top" alt="Plataforma IPTV">
+                        <div class="card-body">
+                            <h5 class="card-title">IPTV</h5>
+                            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+                            <p class="card-text text-success"><strong>Precio: 8 Soles</strong></p>
+                            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20IPTV%0A%2A%20Precio%3A%20S%2F8.00%0A%2A%20Cantidad%3A%201"
+                            class="btn btn-outline-primary" target="_blank">
+                            Añadir al Carro
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Producto 1: DIRECTV GO -->
+                <div class="col-md-3 producto">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="direc.png" class="card-img-top" alt="Plataforma DIRECTV GO">
+                        <div class="card-body">
+                            <h5 class="card-title">DIRECTV GO</h5>
+                            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+                            <p class="card-text text-success"><strong>Precio: 20 Soles</strong></p>
+                            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20DIRECTV%20GO%0A%2A%20Precio%3A%20S%2F20.00%0A%2A%20Cantidad%3A%201"
+                            class="btn btn-outline-primary" target="_blank">
+                            Añadir al Carro
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Producto 2: DISNEY -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="disney.png" class="card-img-top" alt="Plataforma DISNEY">
+        <div class="card-body">
+            <h5 class="card-title">DISNEY</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <p class="card-text text-success"><strong>Precio: 10 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20DISNEY%0A%2A%20Precio%3A%20S%2F10.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 3: FLUJO -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="flujo.png" class="card-img-top" alt="Plataforma FLUJO">
+        <div class="card-body">
+            <h5 class="card-title">FLUJO</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <p class="card-text text-success"><strong>Precio: 14 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20FLUJO%0A%2A%20Precio%3A%20S%2F14.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 4: MOVISTAR PLAY -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="movistar play.png" class="card-img-top" alt="Plataforma MOVISTAR PLAY">
+        <div class="card-body">
+            <h5 class="card-title">MOVISTAR PLAY</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <p class="card-text text-success"><strong>Precio: 20 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20MOVISTAR%20PLAY%0A%2A%20Precio%3A%20S%2F20.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 5: OFFICE -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="office.png" class="card-img-top" alt="Plataforma OFFICE">
+        <div class="card-body">
+            <h5 class="card-title">OFFICE</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un año.</p>
+            <p class="card-text text-success"><strong>Precio: 30 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20OFFICE%0A%2A%20Precio%3A%20S%2F30.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 1: PARAMOUNT -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="paramount.png" class="card-img-top" alt="Plataforma PARAMOUNT">
+        <div class="card-body">
+            <h5 class="card-title">PARAMOUNT</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <p class="card-text text-success"><strong>Precio: 8 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20PARAMOUNT%0A%2A%20Precio%3A%20S%2F8.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 2: PORN -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="porn.png" class="card-img-top" alt="Plataforma PORN">
+        <div class="card-body">
+            <h5 class="card-title">PORN</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <p class="card-text text-success"><strong>Precio: 8 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20PORN%0A%2A%20Precio%3A%20S%2F8.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 3: PRIME -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="prime.png" class="card-img-top" alt="Plataforma PRIME">
+        <div class="card-body">
+            <h5 class="card-title">PRIME</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <p class="card-text text-success"><strong>Precio: 8 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20PRIME%0A%2A%20Precio%3A%20S%2F8.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 4: SPOTIFY -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="spo.png" class="card-img-top" alt="Plataforma SPOTIFY">
+        <div class="card-body">
+            <h5 class="card-title">SPOTIFY</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <p class="card-text text-success"><strong>Precio: 14 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20SPOTIFY%0A%2A%20Precio%3A%20S%2F14.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 5: SUSCRIPCIONES -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="suscri.png" class="card-img-top" alt="Plataforma SUSCRIPCIONES">
+        <div class="card-body">
+            <h5 class="card-title">SUSCRIPCIONES</h5>
+            <p class="card-text">Te Brindamos 1000k de subcristores en el tik y face.</p>
+            <p class="card-text text-success"><strong>Precio: 15 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20SUSCRIPCIONES%0A%2A%20Precio%3A%20S%2F15.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 6: VIX -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="vix.png" class="card-img-top" alt="Plataforma VIX">
+        <div class="card-body">
+            <h5 class="card-title">VIX</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <p class="card-text text-success"><strong>Precio: 5 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20VIX%0A%2A%20Precio%3A%20S%2F5.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 1: WINDOWS 10 -->
+<div class="col-md-3 producto">
+    <div class="card mb-4 shadow-sm">
+        <img src="w10.png" class="card-img-top" alt="Plataforma WINDOWS 10">
+        <div class="card-body">
+            <h5 class="card-title">WINDOWS 10</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un año.</p>
+            <p class="card-text text-success"><strong>Precio: 30 Soles</strong></p>
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20WINDOWS%2010%0A%2A%20Precio%3A%20S%2F30.00%0A%2A%20Cantidad%3A%201"
+            class="btn btn-outline-primary" target="_blank">
+            Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+
+<!-- Producto 2: WINDOWS 11 -->
+<div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+        <img src="w11.png" class="card-img-top" alt="Plataforma WINDOWS 11">
+        <div class="card-body">
+            <h5 class="card-title">WINDOWS 11</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un año.</p>
+            <!-- Descripción del precio -->
+            <p class="card-text text-success"><strong>Precio: 30 Soles</strong></p>
+            <!-- Botón que envía mensaje a WhatsApp con los datos -->
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20WINDOWS%2011%0A%2A%20Precio%3A%20S%2F30.00%0A%2A%20Cantidad%3A%201"
+               class="btn btn-outline-primary" target="_blank">
+                Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 1: CHATGPT -->
+<div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+        <img src="chap.png" class="card-img-top" alt="Plataforma CHATGPT">
+        <div class="card-body">
+            <h5 class="card-title">CHATGPT</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <!-- Descripción del precio -->
+            <p class="card-text text-success"><strong>Precio: 20 Soles</strong></p>
+            <!-- Botón que envía mensaje a WhatsApp con los datos -->
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20CHATGPT%0A%2A%20Precio%3A%20S%2F20.00%0A%2A%20Cantidad%3A%201"
+               class="btn btn-outline-primary" target="_blank">
+                Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 2: CAPCUT -->
+<div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+        <img src="capcut.jpg" class="card-img-top" alt="Plataforma CAPCUT">
+        <div class="card-body">
+            <h5 class="card-title">CAPCUT</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <!-- Descripción del precio -->
+            <p class="card-text text-success"><strong>Precio: 10 Soles</strong></p>
+            <!-- Botón que envía mensaje a WhatsApp con los datos -->
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20CAPCUT%0A%2A%20Precio%3A%20S%2F10.00%0A%2A%20Cantidad%3A%201"
+               class="btn btn-outline-primary" target="_blank">
+                Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 3: SCRIBD -->
+<div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+        <img src="scribd.png" class="card-img-top" alt="Plataforma SCRIBD">
+        <div class="card-body">
+            <h5 class="card-title">SCRIBD</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <!-- Descripción del precio -->
+            <p class="card-text text-success"><strong>Precio: 15 Soles</strong></p>
+            <!-- Botón que envía mensaje a WhatsApp con los datos -->
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20SCRIBD%0A%2A%20Precio%3A%20S%2F15.00%0A%2A%20Cantidad%3A%201"
+               class="btn btn-outline-primary" target="_blank">
+                Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 4: DOXEO -->
+<div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+        <img src="doxeo.jpg" class="card-img-top" alt="Plataforma DOXEO">
+        <div class="card-body">
+            <h5 class="card-title">DOXEO</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <!-- Descripción del precio -->
+            <p class="card-text text-success"><strong>Precio: 8 Soles</strong></p>
+            <!-- Botón que envía mensaje a WhatsApp con los datos -->
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20DOXEO%0A%2A%20Precio%3A%20S%2F8.00%0A%2A%20Cantidad%3A%201"
+               class="btn btn-outline-primary" target="_blank">
+                Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 5: TELELATINO -->
+<div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+        <img src="tele.jpg" class="card-img-top" alt="Plataforma TELELATINO">
+        <div class="card-body">
+            <h5 class="card-title">TELELATINO</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <!-- Descripción del precio -->
+            <p class="card-text text-success"><strong>Precio: 20 Soles</strong></p>
+            <!-- Botón que envía mensaje a WhatsApp con los datos -->
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20TELELATINO%0A%2A%20Precio%3A%20S%2F20.00%0A%2A%20Cantidad%3A%201"
+               class="btn btn-outline-primary" target="_blank">
+                Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Producto 6: SEGUIDORES -->
+<div class="col-md-3">
+    <div class="card mb-4 shadow-sm">
+        <img src="seguidores.png" class="card-img-top" alt="Plataforma SEGUIDORES">
+        <div class="card-body">
+            <h5 class="card-title">SEGUIDORES</h5>
+            <p class="card-text">Te Brindamos esta plataforma por un mes.</p>
+            <!-- Descripción del precio -->
+            <p class="card-text text-success"><strong>Precio: 15 Soles</strong></p>
+            <!-- Botón que envía mensaje a WhatsApp con los datos -->
+            <a href="https://wa.me/51907698346?text=Hola,%20Servicios%20NelAngel,%20me%20gustar%C3%ADa%20comprar%20el%20siguiente%20producto:%0A%0A%2A%20Producto%3A%20SEGUIDORES%0A%2A%20Precio%3A%20S%2F15.00%0A%2A%20Cantidad%3A%201"
+               class="btn btn-outline-primary" target="_blank">
+                Añadir al Carro
+            </a>
+        </div>
+    </div>
+</div>
+
+            </div>         
+        </div>        
     </section>
 
-    <!-- Lista de Productos -->
-    <section id="product-list" class="product-list">
-        <!-- Productos se generarán dinámicamente -->
+    <!-- Contacto -->
+    <section id="contacto" class="contacto bg-light py-5">
+        <div class="container mt-5">
+            <h2>Contáctenos</h2>
+            <form id="contactForm">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="name" placeholder="Tu nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="email" placeholder="tuemail@ejemplo.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Mensaje</label>
+                    <textarea class="form-control" id="message" rows="4" placeholder="Tu mensaje" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <p>© 2024 Catálogo Único - Todos los derechos reservados</p>
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 NELANGEL. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

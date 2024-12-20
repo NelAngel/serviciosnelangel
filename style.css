@@ -1,0 +1,169 @@
+/* Estilos Generales */
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fafafa;
+}
+
+.navbar {
+    background-color: #ffffff;
+}
+
+.navbar .navbar-brand {
+    font-weight: 600;
+    color: #2d2d2d;
+}
+
+.navbar .nav-link {
+    color: #2d2d2d;
+    font-weight: 500;
+}
+
+.navbar .nav-link:hover {
+    color: #ff9500;
+}
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(to right, #6a4c9c, #ff9500);
+    padding: 100px 0;
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #fff;
+}
+
+.hero .btn {
+    background-color: #ff9500;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 15px 30px;
+}
+
+/* Productos */
+.productos .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.productos .card:hover {
+    transform: translateY(-10px);
+}
+
+.productos .card-body {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.productos .card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.productos .card-text {
+    font-size: 1rem;
+    color: #6a4c9c;
+}
+
+.productos .btn {
+    background-color: #ff9500;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 25px;
+}
+
+/* Contacto */
+.contacto input, .contacto textarea {
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.contacto .btn {
+    background-color: #6a4c9c;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+}
+
+footer p {
+    color: #fff;
+}
+
+/* Responsividad */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .productos .col-md-4 {
+        margin-bottom: 20px;
+    }
+}
+/* Productos */
+.productos .card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.productos .card:hover {
+    transform: translateY(-10px);
+}
+
+.productos .card-body {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.productos .card-title {
+    font-size: 1.2rem;  /* Ajustamos el tamaño de la fuente */
+    font-weight: 600;
+}
+
+.productos .card-text {
+    font-size: 1rem;
+    color: #6a4c9c;
+}
+
+.productos .btn {
+    background-color: #ff9500;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 25px;
+}
+
+/* Para dispositivos más pequeños */
+@media (max-width: 768px) {
+    .productos .col-md-3 {
+        width: 50%; /* 2 columnas en pantallas pequeñas */
+    }
+
+    .productos .card-title {
+        font-size: 1rem;  /* Reducimos el tamaño del texto */
+    }
+}
+
